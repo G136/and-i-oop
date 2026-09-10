@@ -3,8 +3,8 @@ plugins {
     id 'jacoco'
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+group = 'org.along'
+version = '6.6-SNAPSHOT'
 
 repositories {
     mavenCentral()
