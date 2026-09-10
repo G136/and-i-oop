@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"org.alorg","c":"Heap","l":"Heap()","u":"%3Cinit%3E()"},{"p":"org.alorg","c":"Heap","l":"sort(int[])"}];updateSearchResults();
+memberSearchIndex = [{"p":"org.alorg","c":"Heap","l":"Heap()","u":"%3Cinit%3E()"},{"p":"org.alorg","c":"Heap","l":"main(String[])","u":"main(java.lang.String[])"},{"p":"org.alorg","c":"Heap","l":"sort(int[])"}];updateSearchResults();
