@@ -19,7 +19,7 @@ public class Heap {
      * @param till don't sift past this heap index
      */
     private static void siftDown(int[] heap, int at, int till) {
-        assert(0 <= at && at <= till && till <= heap.length);
+        assert (0 <= at && at <= till && till <= heap.length);
 
         int l = 2 * at + 1;
         int r = 2 * at + 2;
