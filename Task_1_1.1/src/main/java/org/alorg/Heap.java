@@ -2,8 +2,8 @@ package org.alorg;
 
 /** Just a few heap things; the .sort method is the one you care about. */
 public class Heap {
-    /** Make an array of integers have the heap form (in-place).
-     *
+    /**
+     * Make an array of integers have the heap form (in-place).
      * @param nums this will become heap
      */
     private static void toHeap(int[] nums) {
@@ -12,8 +12,8 @@ public class Heap {
         }
     }
 
-    /** Sift down number at index of heap. Greater numbers float up (see the "vvv"s). In-place.
-     *
+    /**
+     * Sift down number at index of heap. Greater numbers float up (see the "vvv"s). In-place.
      * @param heap the heap
      * @param at the at index
      * @param till don't sift past this heap index
@@ -44,8 +44,8 @@ public class Heap {
         }
     }
 
-    /** Heap sort the numbers (In-place).
-     *
+    /**
+     * Heap sort the numbers (In-place).
      * @param nums the numbers
      */
     public static void sort(int[] nums) {
