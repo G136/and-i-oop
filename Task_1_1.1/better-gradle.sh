@@ -1,12 +1,16 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+set -e
 
-EXTLESS_TARGET="src/main/java/org/alorg/Heap"
-OUTDIR="better-result"
+# without this i get a java.lang.ClassNotFoundException
+cd src/main/java/
+
+EXTLESS_TARGET="org/alorg/Heap"
+OUTDIR="better-build"
 
 mkdir -p $OUTDIR
 
+javadoc $EXTLESS_TARGET.java -d $OUTDIR/docs/
+
 javac $EXTLESS_TARGET.java
 jar -cf $OUTDIR/Classes.jar $EXTLESS_TARGET.class
-java $OUTDIR/Classes.jar
-
-javadoc $EXTLESS_TARGET.java -d $OUTDIR/docs/
+java -cp $OUTDIR/Classes.jar $EXTLESS_TARGET
