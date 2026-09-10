@@ -1,5 +1,6 @@
 package org.alorg;
 
+/** Just a few heap things; the .sort method is the one you care about. */
 public class Heap {
     /** Make an array of integers have the heap form (in-place).
      *
