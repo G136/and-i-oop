@@ -24,7 +24,7 @@ public class Add extends Expression {
     }
 
     @Override
-    public boolean equals(Expression e) {
+    public boolean equals(Object e) {
         return e instanceof Add && this.l.equals(((Add) e).l) && this.r.equals(((Add) e).r);
     }
 }

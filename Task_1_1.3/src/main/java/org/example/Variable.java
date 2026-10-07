@@ -1,7 +1,5 @@
 package org.example;
 
-import java.util.SplittableRandom;
-
 public class Variable extends Expression {
     public final String symbol;
 
@@ -34,7 +32,7 @@ public class Variable extends Expression {
     }
 
     @Override
-    public boolean equals(Expression e) {
+    public boolean equals(Object e) {
         return e instanceof Variable && ((Variable) e).symbol.equals(this.symbol);
     }
 }

@@ -23,7 +23,7 @@ public class Number extends Expression{
     }
 
     @Override
-    public boolean equals(Expression e) {
+    public boolean equals(Object e) {
         return e instanceof Number && this.value == ((Number) e).value;
     }
 }

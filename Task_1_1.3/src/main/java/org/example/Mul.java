@@ -27,7 +27,7 @@ public class Mul extends Expression {
     }
 
     @Override
-    public boolean equals(Expression e) {
+    public boolean equals(Object e) {
         return e instanceof Mul && this.l.equals(((Mul) e).l) && this.r.equals(((Mul) e).r);
     }
 }
