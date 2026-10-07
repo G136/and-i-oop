@@ -1,6 +1,7 @@
 package org.example;
 
 public class Variable extends Expression {
+
     public final String symbol;
 
     public Variable(String symbol) {

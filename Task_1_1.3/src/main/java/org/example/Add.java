@@ -1,6 +1,7 @@
 package org.example;
 
 public class Add extends Expression {
+
     public final Expression l, r;
 
     public Add(Expression l, Expression r) {

@@ -1,13 +1,14 @@
 package org.example;
 
 public class Main {
+
     public static void main(String[] args) throws Exception {
         Expression expression = new Add( // (3+(2*x))
-                new Number(3),
-                new Mul(
-                        new Number(2),
-                        new Variable("x")
-                )
+            new Number(3),
+            new Mul(
+                new Number(2),
+                new Variable("x")
+            )
         );
 
         System.out.println(expression);

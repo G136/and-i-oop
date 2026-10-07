@@ -1,6 +1,7 @@
 package org.example;
 
-public class Number extends Expression{
+public class Number extends Expression {
+
     public final int value;
 
     public Number(int value) {
