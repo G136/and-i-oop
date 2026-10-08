@@ -7,6 +7,12 @@ public abstract class BinaryOperator extends Expression {
     public final Expression rightOperand;
     public final String symbol;
 
+    /**
+     * Initialize an abstract binary operator with its operands and symbol representation.
+     * @param leftOperand first expression, on the left
+     * @param rightOperand second expression, on the right
+     * @param symbol operator string representation
+     */
     public BinaryOperator(Expression leftOperand, Expression rightOperand, String symbol) {
         this.leftOperand = leftOperand;
         this.rightOperand = rightOperand;

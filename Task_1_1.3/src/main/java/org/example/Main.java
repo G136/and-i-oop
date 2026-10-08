@@ -1,6 +1,6 @@
 package org.example;
 
-/** What is the main class if not the window to the soul */
+/** What is the main class if not the window to the soul. */
 public class Main {
 
     /**

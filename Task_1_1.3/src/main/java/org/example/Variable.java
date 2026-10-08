@@ -12,9 +12,9 @@ public class Variable extends Expression {
     @Override
     public int eval(String vars) {
         for (String var : vars.split(";")) {
-            String[] symbol_value = var.split("=");
-            String symbol = symbol_value[0].strip();
-            int value = Integer.parseInt(symbol_value[1].strip());
+            String[] symbolValuePair = var.split("=");
+            String symbol = symbolValuePair[0].strip();
+            int value = Integer.parseInt(symbolValuePair[1].strip());
 
             if (symbol.equals(this.symbol)) {
                 return value;
