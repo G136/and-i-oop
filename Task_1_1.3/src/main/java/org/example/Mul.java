@@ -1,34 +1,22 @@
 package org.example;
 
-public class Mul extends Expression {
+/** I am the Mul class. I multiply. */
+public class Mul extends BinaryOperator {
 
-    public final Expression l, r;
-
-    public Mul(Expression l, Expression r) {
-        this.l = l;
-        this.r = r;
+    public Mul(Expression leftOperand, Expression rightOperand) {
+        super(leftOperand, rightOperand, "*");
     }
 
     @Override
-    public String toString() {
-        return "(" + this.l.toString() + " * " + this.r.toString() + ")";
+    public int eval(String vars) {
+        return this.leftOperand.eval(vars) * this.rightOperand.eval(vars);
     }
 
     @Override
     public Expression derivative(String var) {
         return new Add(
-            new Mul(this.l.derivative(var), this.r),
-            new Mul(this.l, this.r.derivative(var))
+            new Mul(this.leftOperand.derivative(var), this.rightOperand),
+            new Mul(this.leftOperand, this.rightOperand.derivative(var))
         );
-    }
-
-    @Override
-    public int eval(String vars) throws Exception {
-        return this.l.eval(vars) * this.r.eval(vars);
-    }
-
-    @Override
-    public boolean equals(Object e) {
-        return e instanceof Mul && this.l.equals(((Mul) e).l) && this.r.equals(((Mul) e).r);
     }
 }

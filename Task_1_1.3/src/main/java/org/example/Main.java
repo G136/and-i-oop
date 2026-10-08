@@ -1,9 +1,14 @@
 package org.example;
 
+/** What is the main class if not the window to the soul */
 public class Main {
 
-    public static void main(String[] args) throws Exception {
-        Expression expression = new Add( // (3+(2*x))
+    /**
+     * The main of all mains. This one, it mains the hardest.
+     * @param args the arguments. Not used
+     */
+    public static void main(String[] args) {
+        Expression expression = new Add(// (3+(2*x))
             new Number(3),
             new Mul(
                 new Number(2),

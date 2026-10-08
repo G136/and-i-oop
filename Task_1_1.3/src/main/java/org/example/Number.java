@@ -1,5 +1,6 @@
 package org.example;
 
+/** I am the Number class. I hold constant value. */
 public class Number extends Expression {
 
     public final int value;
@@ -9,8 +10,8 @@ public class Number extends Expression {
     }
 
     @Override
-    public String toString() {
-        return Integer.toString(value);
+    public int eval(String vars) {
+        return this.value;
     }
 
     @Override
@@ -19,12 +20,12 @@ public class Number extends Expression {
     }
 
     @Override
-    public int eval(String vars) {
-        return this.value;
+    public boolean equals(Object obj) {
+        return obj instanceof Number && this.value == ((Number) obj).value;
     }
 
     @Override
-    public boolean equals(Object e) {
-        return e instanceof Number && this.value == ((Number) e).value;
+    public String toString() {
+        return Integer.toString(value);
     }
 }

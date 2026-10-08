@@ -1,12 +1,15 @@
 package org.example;
 
+/** All expressions start somewhere, and the place is here. */
 public abstract class Expression {
 
-    public abstract String toString();
+    public abstract int eval(String vars);
 
     public abstract Expression derivative(String var);
 
-    public abstract int eval(String vars) throws Exception;
+    @Override
+    public abstract boolean equals(Object obj); // note: not overriding hashCode, just this
 
-    public abstract boolean equals(Object e); // note: not overriding hashCode, just this
+    @Override
+    public abstract String toString();
 }

@@ -1,31 +1,19 @@
 package org.example;
 
-public class Add extends Expression {
+/** I am the Add class. I... add things. */
+public class Add extends BinaryOperator {
 
-    public final Expression l, r;
-
-    public Add(Expression l, Expression r) {
-        this.l = l;
-        this.r = r;
+    public Add(Expression leftOperand, Expression rightOperand) {
+        super(leftOperand, rightOperand, "+");
     }
 
     @Override
-    public String toString() {
-        return "(" + this.l.toString() + " + " + this.r.toString() + ")";
+    public int eval(String vars) {
+        return this.leftOperand.eval(vars) + this.rightOperand.eval(vars);
     }
 
     @Override
     public Expression derivative(String var) {
-        return new Add(this.l.derivative(var), this.r.derivative(var));
-    }
-
-    @Override
-    public int eval(String vars) throws Exception {
-        return this.l.eval(vars) + this.r.eval(vars);
-    }
-
-    @Override
-    public boolean equals(Object e) {
-        return e instanceof Add && this.l.equals(((Add) e).l) && this.r.equals(((Add) e).r);
+        return new Add(this.leftOperand.derivative(var), this.rightOperand.derivative(var));
     }
 }

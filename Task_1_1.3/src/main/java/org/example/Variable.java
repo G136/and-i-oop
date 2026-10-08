@@ -1,5 +1,6 @@
 package org.example;
 
+/** I am the Variable class. Value may be dynamically impressed upon me. */
 public class Variable extends Expression {
 
     public final String symbol;
@@ -9,17 +10,7 @@ public class Variable extends Expression {
     }
 
     @Override
-    public String toString() {
-        return this.symbol;
-    }
-
-    @Override
-    public Expression derivative(String var) {
-        return new Number(var.equals(symbol) ? 1 : 0);
-    }
-
-    @Override
-    public int eval(String vars) throws Exception {
+    public int eval(String vars) {
         for (String var : vars.split(";")) {
             String[] symbol_value = var.split("=");
             String symbol = symbol_value[0].strip();
@@ -29,11 +20,21 @@ public class Variable extends Expression {
                 return value;
             }
         }
-        throw new Exception(this.symbol + " not present in " + vars);
+        throw new RuntimeException(this.symbol + " not present in " + vars);
     }
 
     @Override
-    public boolean equals(Object e) {
-        return e instanceof Variable && ((Variable) e).symbol.equals(this.symbol);
+    public Expression derivative(String var) {
+        return new Number(var.equals(symbol) ? 1 : 0);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Variable && ((Variable) obj).symbol.equals(this.symbol);
+    }
+
+    @Override
+    public String toString() {
+        return this.symbol;
     }
 }
