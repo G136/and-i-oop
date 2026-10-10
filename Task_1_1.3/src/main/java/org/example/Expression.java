@@ -11,16 +11,22 @@ public abstract class Expression {
     public static Expression parse(String expr) {
         for (int parencount = 0, i = 0; i < expr.length(); i++) {
             switch (expr.charAt(i)) {
-                case '(': parencount++; break;
-                case ')': parencount--; break;
+                case '(':
+                    parencount++;
+                    break;
+                case ')':
+                    parencount--;
+                    break;
                 case '+', '*':
                     if (parencount == 1) {
                         return BinaryOperator.match(
+                            String.valueOf(expr.charAt(i)),
                             parse(expr.substring(0, i)),
-                            parse(expr.substring(i + 1)),
-                            String.valueOf(expr.charAt(i))
+                            parse(expr.substring(i + 1))
                         );
                     }
+                default:
+                    // uhh all good 👍
             }
         }
 

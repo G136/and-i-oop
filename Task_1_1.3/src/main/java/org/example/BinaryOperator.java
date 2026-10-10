@@ -21,15 +21,15 @@ public abstract class BinaryOperator extends Expression {
 
     /**
      * Construct a known binary operator by matching against a given symbol.
-     * @param leftOperand passed to matched constructor
-     * @param rightOperand passed to matched constructor
+     * @param left first operand passed to matched constructor
+     * @param right second operand passed to matched constructor
      * @param symbol represents the binary operator
      * @return the match
      */
-    public static BinaryOperator match(Expression leftOperand, Expression rightOperand, String symbol) {
+    public static BinaryOperator match(String symbol, Expression left, Expression right) {
         return switch (symbol) {
-            case "+" -> new Add(leftOperand, rightOperand);
-            case "*" -> new Mul(leftOperand, rightOperand);
+            case "+" -> new Add(left, right);
+            case "*" -> new Mul(left, right);
             default -> throw new RuntimeException("unknown operator");
         };
     }
