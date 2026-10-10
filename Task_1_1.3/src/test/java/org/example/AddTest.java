@@ -48,9 +48,10 @@ class AddTest {
     @Test
     void toStringWorks() {
         assertEquals("(3 + 3)",
-        new Add(
-            new Number(3),
-            new Number(3)
-        ).toString());
+            new Add(
+                new Number(3),
+                new Number(3)
+            ).toString()
+        );
     }
 }

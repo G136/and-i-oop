@@ -60,9 +60,9 @@ class DivTest {
     @Test
     void toStringWorks() {
         assertEquals("(3 / 3)",
-        new Div(
-            new Number(3),
-            new Number(3)
-        ).toString());
+            new Div(
+                new Number(3),
+                new Number(3)
+            ).toString());
     }
 }

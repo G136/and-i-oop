@@ -54,9 +54,9 @@ class MulTest {
     @Test
     void toStringWorks() {
         assertEquals("(3 * 3)",
-        new Mul(
-            new Number(3),
-            new Number(3)
-        ).toString());
+            new Mul(
+                new Number(3),
+                new Number(3)
+            ).toString());
     }
 }

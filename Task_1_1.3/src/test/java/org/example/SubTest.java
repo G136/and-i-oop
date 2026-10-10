@@ -48,9 +48,9 @@ class SubTest {
     @Test
     void toStringWorks() {
         assertEquals("(3 - 3)",
-        new Sub(
-            new Number(3),
-            new Number(3)
-        ).toString());
+            new Sub(
+                new Number(3),
+                new Number(3)
+            ).toString());
     }
 }
