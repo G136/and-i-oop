@@ -25,7 +25,7 @@ public abstract class Expression {
                                 parse(expr.substring(0, i)),
                                 parse(expr.substring(i + 1))
                             );
-                        } catch (RuntimeException e) {
+                        } catch (IllegalArgumentException e) {
                             // uhh all good 👍
                         }
                     }
