@@ -25,5 +25,7 @@ public class Main {
         Expression exprSwpd = new Add(new Number(6), new Number(5));
         System.out.println(exprBase.equals(exprSame));
         System.out.println(exprBase.equals(exprSwpd));
+
+        System.out.println(Expression.parse("(3 + (2 * x))").eval("x = 10"));
     }
 }

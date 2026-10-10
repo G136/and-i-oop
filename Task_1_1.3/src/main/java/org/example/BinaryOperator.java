@@ -19,6 +19,21 @@ public abstract class BinaryOperator extends Expression {
         this.symbol = symbol;
     }
 
+    /**
+     * Construct a known binary operator by matching against a given symbol.
+     * @param leftOperand passed to matched constructor
+     * @param rightOperand passed to matched constructor
+     * @param symbol represents the binary operator
+     * @return the match
+     */
+    public static BinaryOperator match(Expression leftOperand, Expression rightOperand, String symbol) {
+        return switch (symbol) {
+            case "+" -> new Add(leftOperand, rightOperand);
+            case "*" -> new Mul(leftOperand, rightOperand);
+            default -> throw new RuntimeException("unknown operator");
+        };
+    }
+
     @Override
     public boolean equals(Object obj) {
         return this.getClass() == obj.getClass()
