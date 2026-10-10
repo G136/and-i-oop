@@ -25,12 +25,15 @@ public abstract class BinaryOperator extends Expression {
      * @param right second operand passed to matched constructor
      * @param symbol represents the binary operator
      * @return the match
+     * @throws IllegalArgumentException when no match
      */
     public static BinaryOperator match(String symbol, Expression left, Expression right) {
         return switch (symbol) {
             case "+" -> new Add(left, right);
+            case "-" -> new Sub(left, right);
             case "*" -> new Mul(left, right);
-            default -> throw new RuntimeException("unknown operator");
+            case "/" -> new Div(left, right);
+            default -> throw new IllegalArgumentException("unknown operator");
         };
     }
 

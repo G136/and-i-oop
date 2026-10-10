@@ -20,7 +20,7 @@ public class Variable extends Expression {
                 return value;
             }
         }
-        throw new RuntimeException(this.symbol + " not present in " + vars);
+        throw new IllegalArgumentException(this.symbol + " not present in " + vars);
     }
 
     @Override

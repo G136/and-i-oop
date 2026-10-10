@@ -17,17 +17,18 @@ public abstract class Expression {
                 case ')':
                     parencount--;
                     break;
-                case '+', '*':
-                    if (parencount == 1) {
-                        return BinaryOperator.match(
-                            String.valueOf(expr.charAt(i)),
-                            parse(expr.substring(0, i)),
-                            parse(expr.substring(i + 1))
-                        );
-                    }
-                    break;
                 default:
-                    // uhh all good 👍
+                    if (parencount == 1) {
+                        try {
+                            return BinaryOperator.match(
+                                String.valueOf(expr.charAt(i)),
+                                parse(expr.substring(0, i)),
+                                parse(expr.substring(i + 1))
+                            );
+                        } catch (RuntimeException e) {
+                            // uhh all good 👍
+                        }
+                    }
             }
         }
 
@@ -44,6 +45,7 @@ public abstract class Expression {
      * Evaluate the expression.
      * @param vars ;-separated string of values to be assigned to variables in the form var=val
      * @return the result of the evaluation
+     * @throws IllegalArgumentException a variable is present in the expression but not in vars
      */
     public abstract int eval(String vars);
 
