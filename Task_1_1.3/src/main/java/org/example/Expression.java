@@ -25,6 +25,7 @@ public abstract class Expression {
                             parse(expr.substring(i + 1))
                         );
                     }
+                    break;
                 default:
                     // uhh all good 👍
             }
