@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Directed graph backed by an adjacency matrix.
- */
+/** Directed graph backed by an adjacency matrix. */
 public class AdjacencyMatrixGraph extends AbstractGraph {
     /**
      * Vertex order used as row and column indices in {@link #matrix}.
@@ -15,7 +13,8 @@ public class AdjacencyMatrixGraph extends AbstractGraph {
     private final List<Integer> vertices = new ArrayList<>();
 
     /**
-     * Matrix cell {@code [i][j]} is {@code true} when an edge exists from vertex {@code i} to {@code j}.
+     * Matrix cell {@code [i][j]} is {@code true} when an edge exists
+     * from vertex {@code i} to {@code j}.
      */
     private final List<List<Boolean>> matrix = new ArrayList<>();
 

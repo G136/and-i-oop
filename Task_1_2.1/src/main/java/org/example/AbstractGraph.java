@@ -223,7 +223,8 @@ public abstract class AbstractGraph implements Graph {
     /**
      * Adds a new vertex to internal state.
      *
-     * <p>Called only after the vertex is inserted into {@link #vertices} and known to be unique.</p>
+     * <p>Called only after the vertex is inserted into {@link #vertices}
+     * and known to be unique.</p>
      *
      * @param vertex vertex value
      * @return {@code true} if internal state update succeeded

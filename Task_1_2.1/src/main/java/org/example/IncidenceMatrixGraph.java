@@ -5,9 +5,22 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/** Directed graph backed by an incidence matrix. */
 public class IncidenceMatrixGraph extends AbstractGraph {
+    /**
+     * Vertex order used as row indices inside each incidence column.
+     */
     private final List<Integer> vertices = new ArrayList<>();
+
+    /**
+     * Edge list aligned with {@link #columns} by index.
+     */
     private final List<Edge> edges = new ArrayList<>();
+
+    /**
+     * Incidence columns, one per edge.
+     * -1 for source, 1 for target, and 2 for a self-loop
+     */
     private final List<List<Integer>> columns = new ArrayList<>();
 
     @Override

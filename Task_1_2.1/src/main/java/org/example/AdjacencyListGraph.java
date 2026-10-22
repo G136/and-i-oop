@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Directed graph backed by an adjacency-list map.
- */
+/** Directed graph backed by an adjacency-list map. */
 public class AdjacencyListGraph extends AbstractGraph {
     /**
      * Outgoing neighbors keyed by source vertex.
