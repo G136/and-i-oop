@@ -1,5 +1,8 @@
 package org.example;
 
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.List;
 import java.util.Set;
 
 public interface Graph {
@@ -25,5 +28,9 @@ public interface Graph {
 
 
     void clear();
+
+    void readFromFile(Path path) throws IOException;
+
+    List<Integer> topologicalSort();
 }
 

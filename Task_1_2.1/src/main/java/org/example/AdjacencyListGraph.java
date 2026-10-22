@@ -58,7 +58,6 @@ public class AdjacencyListGraph extends AbstractGraph {
 
     @Override
     protected Set<Integer> doGetNeighbors(int vertex) {
-        ensureVertex(vertex);
         HashSet<Integer> neighbors = adjacency.get(vertex);
         return new HashSet<>(neighbors);
     }
