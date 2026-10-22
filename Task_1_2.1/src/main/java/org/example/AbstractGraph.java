@@ -5,7 +5,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
+/**
+ * Base implementation of {@link Graph} that keeps common validation and algorithm logic.
+ *
+ * <p>Concrete subclasses are responsible for storage details through {@code do*} hooks,
+ * while this class enforces the public contract from {@link Graph}.</p>
+ */
 public abstract class AbstractGraph implements Graph {
+    /**
+     * Canonical set of known vertices used for public membership checks.
+     */
     protected final HashSet<Integer> vertices = new HashSet<>();
 
     @Override
@@ -29,6 +38,12 @@ public abstract class AbstractGraph implements Graph {
         return true;
     }
 
+    /**
+     * Verifies that a vertex exists in the graph.
+     *
+     * @param vertex vertex value
+     * @throws IllegalArgumentException when the vertex is absent
+     */
     protected final void ensureVertex(int vertex) {
         if (!getVertices().contains(vertex)) {
             throw new IllegalArgumentException("Unknown vertex: " + vertex);
@@ -88,6 +103,9 @@ public abstract class AbstractGraph implements Graph {
         doClear();
     }
 
+    /**
+     * Graphs are equal when their vertex and edge sets are equal, regardless of representation.
+     */
     @Override
     public final boolean equals(Object obj) {
         return obj instanceof Graph
@@ -95,11 +113,17 @@ public abstract class AbstractGraph implements Graph {
                 && Objects.equals(getEdges(), ((Graph) obj).getEdges());
     }
 
+    /**
+     * Hash code derived from vertex and edge sets to match {@link #equals(Object)}.
+     */
     @Override
     public final int hashCode() {
         return Objects.hash(getVertices(), getEdges());
     }
 
+    /**
+     * Returns a deterministic string representation with sorted vertices and edges.
+     */
     @Override
     public String toString() {
         List<Integer> sortedVertices = new ArrayList<>(getVertices());
@@ -188,26 +212,84 @@ public abstract class AbstractGraph implements Graph {
         }
 
         if (result.size() != getVertices().size()) {
-            throw new IllegalStateException("Graph contains a cycle; topological sort is impossible");
+            throw new IllegalStateException(
+                    "Graph contains a cycle; topological sort is impossible"
+            );
         }
 
         return List.copyOf(result);
     }
 
+    /**
+     * Adds a new vertex to internal state.
+     *
+     * <p>Called only after the vertex is inserted into {@link #vertices} and known to be unique.</p>
+     *
+     * @param vertex vertex value
+     * @return {@code true} if internal state update succeeded
+     */
     protected abstract boolean doAddVertex(int vertex);
 
+    /**
+     * Removes a vertex from internal state along with all incident edges.
+     *
+     * <p>Called only for an existing vertex.</p>
+     *
+     * @param vertex vertex value
+     * @return {@code true} if internal state update succeeded
+     */
     protected abstract boolean doRemoveVertex(int vertex);
 
+    /**
+     * Adds a directed edge to internal state.
+     *
+     * <p>Called only when both endpoint vertices are known to exist.</p>
+     *
+     * @param edge edge to add
+     * @return {@code true} if edge was new, {@code false} if it already existed
+     */
     protected abstract boolean doAddEdge(Edge edge);
 
+    /**
+     * Removes a directed edge from internal state.
+     *
+     * <p>Called only when the edge is known to exist.</p>
+     *
+     * @param edge edge to remove
+     * @return {@code true} if edge was removed
+     */
     protected abstract boolean doRemoveEdge(Edge edge);
 
+    /**
+     * Checks whether an edge exists in internal state.
+     *
+     * <p>Called only when both endpoint vertices are known to exist.</p>
+     *
+     * @param edge edge to check
+     * @return {@code true} if present, {@code false} otherwise
+     */
     protected abstract boolean doHasEdge(Edge edge);
 
+    /**
+     * Returns current edges from internal state.
+     *
+     * @return mutable or immutable set of edges; caller wraps it as unmodifiable
+     */
     protected abstract Set<Edge> doGetEdges();
 
+    /**
+     * Returns outgoing neighbors for an existing vertex.
+     *
+     * <p>Called only for known vertices.</p>
+     *
+     * @param vertex source vertex
+     * @return neighbor set; caller wraps it as unmodifiable
+     */
     protected abstract Set<Integer> doGetNeighbors(int vertex);
 
+    /**
+     * Clears all subclass-specific internal state.
+     */
     protected abstract void doClear();
 }
 

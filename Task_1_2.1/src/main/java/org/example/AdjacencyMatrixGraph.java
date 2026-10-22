@@ -5,8 +5,18 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Directed graph backed by an adjacency matrix.
+ */
 public class AdjacencyMatrixGraph extends AbstractGraph {
+    /**
+     * Vertex order used as row and column indices in {@link #matrix}.
+     */
     private final List<Integer> vertices = new ArrayList<>();
+
+    /**
+     * Matrix cell {@code [i][j]} is {@code true} when an edge exists from vertex {@code i} to {@code j}.
+     */
     private final List<List<Boolean>> matrix = new ArrayList<>();
 
     @Override
@@ -83,7 +93,7 @@ public class AdjacencyMatrixGraph extends AbstractGraph {
     @Override
     protected Set<Integer> doGetNeighbors(int vertex) {
         int index = vertices.indexOf(vertex);
-        assert(index >= 0);
+        assert (index >= 0);
 
         HashSet<Integer> neighbors = new HashSet<>();
         for (int j = 0; j < vertices.size(); j++) {

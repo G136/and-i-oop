@@ -76,7 +76,10 @@ class GraphTest {
         graph.readFromFile(file);
 
         assertEquals(Set.of(1, 2, 3, 4), graph.getVertices());
-        assertEquals(Set.of(new Edge(1, 2), new Edge(1, 3), new Edge(2, 4), new Edge(3, 4)), graph.getEdges());
+        assertEquals(
+                Set.of(new Edge(1, 2), new Edge(1, 3), new Edge(2, 4), new Edge(3, 4)),
+                graph.getEdges()
+        );
         assertEquals(List.of(1, 2, 3, 4), graph.topologicalSort());
     }
 
