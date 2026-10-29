@@ -51,7 +51,7 @@ public class GradeBook {
         }
         AcademicRecord record = new AcademicRecord(disciplineName, assessmentType,
                 receivedGrade, currentSemester);
-        semesters.get(semesters.size() - 1).add(record);
+        semesters.getLast().add(record);
         allRecords.add(record);
     }
 
@@ -170,7 +170,7 @@ public class GradeBook {
         }
 
         List<AcademicRecord> currentSemesterRecords =
-                Collections.unmodifiableList(semesters.get(semesters.size() - 1));
+                Collections.unmodifiableList(semesters.getLast());
 
         if (currentSemesterRecords.isEmpty()) {
             return false;
