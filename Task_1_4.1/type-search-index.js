@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"org.example","l":"AcademicRecord"},{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"org.example","l":"AssessmentType"},{"p":"org.example","l":"Grade"},{"p":"org.example","l":"GradeBook"}];updateSearchResults();
