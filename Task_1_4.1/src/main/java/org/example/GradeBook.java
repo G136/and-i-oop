@@ -51,7 +51,7 @@ public class GradeBook {
         }
         AcademicRecord record = new AcademicRecord(disciplineName, assessmentType,
                 receivedGrade, currentSemester);
-        semesters.getLast().add(record);
+        semesters.get(semesters.size() - 1).add(record);
         allRecords.add(record);
     }
 
@@ -118,7 +118,7 @@ public class GradeBook {
      * Predicts the possibility of receiving an honors diploma.
      * The function can be used before the completion of studies.
      *
-     * @return {@code true} if the student is on track for an honors diploma, {@code false} otherwise
+     * @return {@code true} if the student is on track for an honors diploma, else {@code false}
      */
     public boolean canGetHonorsDiploma() {
         boolean qualificationOk = !hasGrade(allRecords, Grade.B,
@@ -162,14 +162,15 @@ public class GradeBook {
      * Checks if the student is eligible for an increased scholarship next semester.
      * Only the results of the current semester are evaluated.
      *
-     * @return {@code true} if the student qualifies for an increased scholarship, {@code false} otherwise
+     * @return {@code true} if the student is worth an increased scholarship, else {@code false}
      */
     public boolean canGetIncreasedScholarship() {
         if (currentSemester == 0) {
             return false;
         }
 
-        List<AcademicRecord> currentSemesterRecords = Collections.unmodifiableList(semesters.getLast());
+        List<AcademicRecord> currentSemesterRecords =
+                Collections.unmodifiableList(semesters.get(semesters.size() - 1));
 
         if (currentSemesterRecords.isEmpty()) {
             return false;
